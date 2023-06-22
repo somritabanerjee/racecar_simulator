@@ -1,0 +1,1273 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 100 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='asphalt_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>28.54 22.04 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>28.54 22.04 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://asphalt_plane/materials/scripts</uri>
+              <uri>model://asphalt_plane/materials/textures</uri>
+              <name>vrc/asphalt</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>-0.719505 0.551979 0 0 -0 0</pose>
+    </model>
+    <model name='race_track'>
+      <pose frame=''>-39.47 -22.7 0 0 -0 0</pose>
+      <static>1</static>
+      <link name='body'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://race_track/race_track.stl</uri>
+              <scale>0.1 0.1 0.1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://race_track/race_track.stl</uri>
+              <scale>0.1 0.1 0.025</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='sandy_patch'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>-0.719505 -4.95802 0.01 0 -0 0</pose>
+    </model>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <state world_name='default'>
+      <sim_time>610 414000000</sim_time>
+      <real_time>442 547960203</real_time>
+      <wall_time>1621559119 925459230</wall_time>
+      <iterations>439879</iterations>
+      <model name='asphalt_plane'>
+        <pose frame=''>-0.719505 0.551979 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-0.719505 0.551979 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='car_1'>
+        <pose frame=''>-9.01801 -5 0.049999 -1e-06 2e-06 9e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='car_1_base_link'>
+          <pose frame=''>-9.01801 -5 0.049999 -1e-06 2e-06 9e-05</pose>
+          <velocity>-3.2e-05 1e-06 7e-06 1e-06 -5e-06 -1e-06</velocity>
+          <acceleration>0 -0 -0 0 -0 0</acceleration>
+          <wrench>0 -0 -0 0 -0 0</wrench>
+        </link>
+        <link name='car_1_left_front_wheel'>
+          <pose frame=''>-8.69301 -4.89997 0.099999 1.57085 1.21071 -0.000471</pose>
+          <velocity>-3.2e-05 2e-06 7e-06 -4.5e-05 -0.000648 1e-06</velocity>
+          <acceleration>0 0 -0 0 1e-06 0</acceleration>
+          <wrench>0 0 -0 0 -0 0</wrench>
+        </link>
+        <link name='car_1_left_rear_wheel'>
+          <pose frame=''>-9.01801 -4.9 0.099999 1.5708 -0.360316 9.1e-05</pose>
+          <velocity>-3.2e-05 0 7e-06 -8e-06 -0.000597 -2e-06</velocity>
+          <acceleration>0 -0 -0 0 1e-06 0</acceleration>
+          <wrench>0 -0 -0 0 -0 0</wrench>
+        </link>
+        <link name='car_1_left_steering_hinge'>
+          <pose frame=''>-8.69301 -4.89997 0.099999 1.78401 1.57076 1.7835</pose>
+          <velocity>-3.2e-05 2e-06 8e-06 -0.000118 -5e-06 0</velocity>
+          <acceleration>0 -0 0 -0 -0 -0</acceleration>
+          <wrench>0 -0 0 0 -0 0</wrench>
+        </link>
+        <link name='car_1_right_front_wheel'>
+          <pose frame=''>-8.693 -5.09997 0.099999 1.57074 1.20963 -0.002444</pose>
+          <velocity>-3.3e-05 -2e-06 7e-06 4.5e-05 -0.000656 -1e-06</velocity>
+          <acceleration>0 -0 -0 0 1e-06 0</acceleration>
+          <wrench>0 -0 -0 0 -0 0</wrench>
+        </link>
+        <link name='car_1_right_rear_wheel'>
+          <pose frame=''>-9.018 -5.1 0.099999 1.5708 -0.359871 8.9e-05</pose>
+          <velocity>-3.3e-05 1e-06 6e-06 -1e-05 -0.000608 -3e-06</velocity>
+          <acceleration>0 0 -0 0 1e-06 0</acceleration>
+          <wrench>0 0 -0 0 -0 0</wrench>
+        </link>
+        <link name='car_1_right_steering_hinge'>
+          <pose frame=''>-8.693 -5.09997 0.099999 2.31334 1.57078 2.31095</pose>
+          <velocity>-3.3e-05 1e-06 8e-06 -3.4e-05 -5e-06 -1e-06</velocity>
+          <acceleration>0 -0 0 0 -0 0</acceleration>
+          <wrench>0 -0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='race_track'>
+        <pose frame=''>-28.0315 -24.6199 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose frame=''>-28.0315 -24.6199 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch'>
+        <pose frame=''>-0.719505 -4.95802 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-0.719505 -4.95802 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch_clone'>
+        <pose frame=''>3.31168 -8.35711 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.31168 -8.35711 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch_clone_0'>
+        <pose frame=''>-8.32693 4.31646 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-8.32693 4.31646 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch_clone_1'>
+        <pose frame=''>-10.9282 -2.30084 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-10.9282 -2.30084 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch_clone_2'>
+        <pose frame=''>12.3827 1.26356 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>12.3827 1.26356 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch_clone_3'>
+        <pose frame=''>12.1672 9.74594 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>12.1672 9.74594 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='sandy_patch_clone_4'>
+        <pose frame=''>6.66609 0.346023 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>6.66609 0.346023 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 100 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-11.1005 -22.4568 17.2669 -0 0.687642 1.15301</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='car_1'>
+      <link name='car_1_base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0.146975 1.2e-05 0.054895 0 -0 0</pose>
+          <mass>4.13003</mass>
+          <inertia>
+            <ixx>0.0140204</ixx>
+            <ixy>0.000114667</ixy>
+            <ixz>0.00059421</ixz>
+            <iyy>0.05386</iyy>
+            <iyz>-0.000181492</iyz>
+            <izz>0.0589678</izz>
+          </inertia>
+        </inertial>
+        <collision name='car_1_base_link_fixed_joint_lump__car_1_laser_collision'>
+          <pose frame=''>0.125 0 0.205 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='car_1_base_link_fixed_joint_lump__car_1_link_collision_1'>
+          <pose frame=''>0.39 0 0.325 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.033 0.175 0.03</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='car_1_base_link_fixed_joint_lump__car_1_chassis_visual'>
+          <pose frame=''>0.46 -0.135 -0.13 1.57 0 3.14</pose>
+          <geometry>
+            <mesh>
+              <scale>0.00099 0.000938 0.000938</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/chassis.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Yellow</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='car_1_base_link_fixed_joint_lump__car_1_laser_visual_1'>
+          <pose frame=''>0.125 0 0.205 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/hokuyo.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='car_1_base_link_fixed_joint_lump__car_1_link_visual_2'>
+          <pose frame=''>0.39 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.033 0.175 0.03</size>
+            </box>
+          </geometry>
+        </visual>
+        <velocity_decay/>
+        <velocity_decay/>
+        <sensor name='car_1_hokuyo_sensor' type='ray'>
+          <visualize>0</visualize>
+          <update_rate>40</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1081</samples>
+                <resolution>1</resolution>
+                <min_angle>-2.35619</min_angle>
+                <max_angle>2.35619</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>30</max>
+              <resolution>0.01</resolution>
+            </range>
+            <noise>
+              <mean>0</mean>
+              <stddev>0.01</stddev>
+              <type>gaussian</type>
+            </noise>
+          </ray>
+          <plugin name='gazebo_ros_hokuyo_controller' filename='libgazebo_ros_laser.so'>
+            <topicName>/car_1/scan</topicName>
+            <frameName>car_1_laser</frameName>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose frame=''>0.125 0 0.205 0 -0 0</pose>
+        </sensor>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <sensor name='car_1_left_sensor' type='camera'>
+          <update_rate>30</update_rate>
+          <camera name='front_camera'>
+            <horizontal_fov>1.74</horizontal_fov>
+            <image>
+              <width>1920</width>
+              <height>1080</height>
+              <format>B8G8R8</format>
+            </image>
+            <clip>
+              <near>0.02</near>
+              <far>300</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>/car_1/camera</cameraName>
+            <imageTopicName>image</imageTopicName>
+            <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+            <frameName>car_1_camera_link</frameName>
+            <hackBaseline>0</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose frame=''>-2.11 1.5 1.825 0 0.57 -0.57</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='car_1_left_rear_wheel'>
+        <pose frame=''>0 0.1 0.05 1.5708 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 -0.0225 0 -0 0</pose>
+          <mass>0.34055</mass>
+          <inertia>
+            <ixx>0.00026046</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00026046</iyy>
+            <iyz>0</iyz>
+            <izz>0.00041226</izz>
+          </inertia>
+        </inertial>
+        <collision name='car_1_left_rear_wheel_collision'>
+          <pose frame=''>0 0 -0.0225 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.045</length>
+              <radius>0.05</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+07</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='car_1_left_rear_wheel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/left_wheel.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='car_1_left_rear_wheel_joint' type='revolute'>
+        <child>car_1_left_rear_wheel</child>
+        <parent>car_1_base_link</parent>
+        <axis>
+          <xyz>0 1 4e-06</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='car_1_left_steering_hinge'>
+        <pose frame=''>0.325 0.1 0.05 3.14159 1.57079 3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4e-06</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4e-06</iyy>
+            <iyz>0</iyz>
+            <izz>4e-06</izz>
+          </inertia>
+        </inertial>
+        <visual name='car_1_left_steering_hinge_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/hinge.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='car_1_left_steering_hinge_joint' type='revolute'>
+        <child>car_1_left_steering_hinge</child>
+        <parent>car_1_base_link</parent>
+        <axis>
+          <xyz>4e-06 0 1</xyz>
+          <limit>
+            <lower>-1</lower>
+            <upper>1</upper>
+            <effort>10</effort>
+            <velocity>100</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='car_1_left_front_wheel'>
+        <pose frame=''>0.325 0.1 0.05 -1.57079 1.57079 -3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 -0.0225 0 -0 0</pose>
+          <mass>0.34055</mass>
+          <inertia>
+            <ixx>0.00026046</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00026046</iyy>
+            <iyz>0</iyz>
+            <izz>0.00041226</izz>
+          </inertia>
+        </inertial>
+        <collision name='car_1_left_front_wheel_collision'>
+          <pose frame=''>0 0 -0.0225 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.045</length>
+              <radius>0.05</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+07</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 1</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='car_1_left_front_wheel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/left_wheel.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='car_1_left_front_wheel_joint' type='revolute'>
+        <child>car_1_left_front_wheel</child>
+        <parent>car_1_left_steering_hinge</parent>
+        <axis>
+          <xyz>4e-06 1 -0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='car_1_right_rear_wheel'>
+        <pose frame=''>0 -0.1 0.05 1.5708 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0.0225 0 -0 0</pose>
+          <mass>0.34055</mass>
+          <inertia>
+            <ixx>0.00026046</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00026046</iyy>
+            <iyz>0</iyz>
+            <izz>0.00041226</izz>
+          </inertia>
+        </inertial>
+        <collision name='car_1_right_rear_wheel_collision'>
+          <pose frame=''>0 0 0.0225 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.045</length>
+              <radius>0.05</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+07</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='car_1_right_rear_wheel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/right_wheel.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='car_1_right_rear_wheel_joint' type='revolute'>
+        <child>car_1_right_rear_wheel</child>
+        <parent>car_1_base_link</parent>
+        <axis>
+          <xyz>0 1 4e-06</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='car_1_right_steering_hinge'>
+        <pose frame=''>0.325 -0.1 0.05 3.14159 1.57079 3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4e-06</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>4e-06</iyy>
+            <iyz>0</iyz>
+            <izz>4e-06</izz>
+          </inertia>
+        </inertial>
+        <visual name='car_1_right_steering_hinge_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/hinge.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='car_1_right_steering_hinge_joint' type='revolute'>
+        <child>car_1_right_steering_hinge</child>
+        <parent>car_1_base_link</parent>
+        <axis>
+          <xyz>4e-06 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='car_1_right_front_wheel'>
+        <pose frame=''>0.325 -0.1 0.05 -1.57079 1.57079 -3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 0.0225 0 -0 0</pose>
+          <mass>0.34055</mass>
+          <inertia>
+            <ixx>0.00026046</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00026046</iyy>
+            <iyz>0</iyz>
+            <izz>0.00041226</izz>
+          </inertia>
+        </inertial>
+        <collision name='car_1_right_front_wheel_collision'>
+          <pose frame=''>0 0 0.0225 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.045</length>
+              <radius>0.05</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+07</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 1</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='car_1_right_front_wheel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/somrita/Documents/autosim_ws/src/simulator/urdf/meshes/right_wheel.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Black</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='car_1_right_front_wheel_joint' type='revolute'>
+        <child>car_1_right_front_wheel</child>
+        <parent>car_1_right_steering_hinge</parent>
+        <axis>
+          <xyz>4e-06 1 -0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/car_1</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+      <static>0</static>
+      <plugin name='p3d_base_controller' filename='libgazebo_ros_p3d.so'>
+        <alwaysOn>1</alwaysOn>
+        <updateRate>50.0</updateRate>
+        <bodyName>car_1_base_link</bodyName>
+        <topicName>/car_1/ground_truth</topicName>
+        <gaussianNoise>0.01</gaussianNoise>
+        <frameName>world</frameName>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <pose frame=''>-9 -5 0.05 0 -0 0</pose>
+    </model>
+    <model name='sandy_patch_clone'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>3.31168 -8.35711 0.01 0 -0 0</pose>
+    </model>
+    <model name='sandy_patch_clone_0'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>-8.32693 4.31646 0.01 0 -0 0</pose>
+    </model>
+    <model name='sandy_patch_clone_1'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>-10.9282 -2.30084 0.01 0 -0 0</pose>
+    </model>
+    <model name='sandy_patch_clone_2'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>12.3827 1.26356 0.01 0 -0 0</pose>
+    </model>
+    <model name='sandy_patch_clone_3'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>12.1672 9.74594 0.01 0 -0 0</pose>
+    </model>
+    <model name='sandy_patch_clone_4'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>6.66609 0.346023 0.01 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>

@@ -1,0 +1,24 @@
+racecar_gp
+	racecar_dynamics --> SimpleCarDynamics 
+	used zoh integration
+	Alpaca GP (state = 6)
+racecar_mh	
+	same but Alpaca MH
+racecar_gp_610
+	don't know
+racecar_gp_sand
+	racecar_dynamics -->SimpleCarDynamicsWithSand
+	used zoh integration
+	Alpaca GP
+racecar_mh_sand
+	same but Alpaca MH
+racecar_gp_vel
+	racecar_dynamics_vel -->SimpleCarDynamics
+	Euler integration
+	Alpaca GP (state = 3)
+	kernel input dim = 0
+racecar_gp_normal_int
+	racecar_dynamics --> SimpleCarDynamicsWithSand
+	Euler integration
+	Alpaca GP (state = 6)
+	kernel input dim = 2

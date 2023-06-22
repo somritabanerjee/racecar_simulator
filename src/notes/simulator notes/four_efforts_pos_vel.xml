@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root version="2.3.8">
+ <tabbed_widget name="Main Window" parent="main_window">
+  <Tab tab_name="tab1" containers="1">
+   <Container>
+    <DockSplitter sizes="1" orientation="-" count="1">
+     <DockSplitter sizes="0.5;0.5" orientation="|" count="2">
+      <DockSplitter sizes="0.500747;0.499253" orientation="-" count="2">
+       <DockArea name="...">
+        <plot mode="TimeSeries" style="Lines">
+         <range left="0.000000" bottom="-695.260005" right="47.040000" top="218.039303"/>
+         <limitY/>
+         <curve name="/car_1/joint_states/car_1_left_front_wheel_joint/effort" color="#1f77b4"/>
+         <curve name="/car_1/joint_states/car_1_left_front_wheel_joint/position" color="#f14cc1"/>
+         <curve name="/car_1/joint_states/car_1_left_rear_wheel_joint/position" color="#9467bd"/>
+         <curve name="/car_1/joint_states/car_1_left_steering_hinge_joint/position" color="#17becf"/>
+         <curve name="/car_1/joint_states/car_1_right_front_wheel_joint/position" color="#bcbd22"/>
+         <curve name="/car_1/joint_states/car_1_right_rear_wheel_joint/position" color="#1f77b4"/>
+         <curve name="/car_1/joint_states/car_1_right_rear_wheel_joint/velocity" color="#d62728"/>
+        </plot>
+       </DockArea>
+       <DockArea name="...">
+        <plot mode="TimeSeries" style="Lines">
+         <range left="0.000000" bottom="-1.037500" right="47.040000" top="0.537500"/>
+         <limitY/>
+         <curve name="/car_1/joint_states/car_1_left_rear_wheel_joint/effort" color="#d62728"/>
+        </plot>
+       </DockArea>
+      </DockSplitter>
+      <DockSplitter sizes="0.500747;0.499253" orientation="-" count="2">
+       <DockArea name="...">
+        <plot mode="TimeSeries" style="Lines">
+         <range left="0.000000" bottom="-1.037500" right="47.040000" top="0.537500"/>
+         <limitY/>
+         <curve name="/car_1/joint_states/car_1_right_front_wheel_joint/effort" color="#1ac938"/>
+        </plot>
+       </DockArea>
+       <DockArea name="...">
+        <plot mode="TimeSeries" style="Lines">
+         <range left="0.000000" bottom="-1.037500" right="47.040000" top="0.537500"/>
+         <limitY/>
+         <curve name="/car_1/joint_states/car_1_right_rear_wheel_joint/effort" color="#ff7f0e"/>
+        </plot>
+       </DockArea>
+      </DockSplitter>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter sizes="1" orientation="-" count="1">
+     <DockArea name="...">
+      <plot mode="TimeSeries" style="Lines">
+       <range left="0.000000" bottom="-1.037500" right="47.040000" top="0.537500"/>
+       <limitY/>
+       <curve name="/car_1/left_front_wheel_effort_controller/command/data" color="#1f77b4"/>
+       <curve name="/car_1/left_rear_wheel_effort_controller/command/data" color="#d62728"/>
+       <curve name="/car_1/right_front_wheel_effort_controller/command/data" color="#1ac938"/>
+       <curve name="/car_1/right_rear_wheel_effort_controller/command/data" color="#ff7f0e"/>
+      </plot>
+     </DockArea>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <currentTabIndex index="0"/>
+ </tabbed_widget>
+ <use_relative_time_offset enabled="1"/>
+ <!-- - - - - - - - - - - - - - - -->
+ <!-- - - - - - - - - - - - - - - -->
+ <Plugins>
+  <plugin ID="DataLoad CSV">
+   <default time_axis=""/>
+  </plugin>
+  <plugin ID="DataLoad ROS bags">
+   <use_header_stamp value="false"/>
+   <use_renaming_rules value="true"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+  </plugin>
+  <plugin ID="DataLoad ULog"/>
+  <plugin ID="MQTT Subscriber"/>
+  <plugin ID="ROS Topic Subscriber">
+   <use_header_stamp value="true"/>
+   <use_renaming_rules value="true"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+  </plugin>
+  <plugin ID="UDP Server"/>
+  <plugin ID="WebSocket Server"/>
+  <plugin ID="ZMQ Subscriber"/>
+  <plugin ID="ROS /rosout Visualization" status="idle"/>
+  <plugin ID="ROS Topic Re-Publisher" status="idle"/>
+ </Plugins>
+ <!-- - - - - - - - - - - - - - - -->
+ <previouslyLoaded_Datafiles/>
+ <!-- - - - - - - - - - - - - - - -->
+ <customMathEquations/>
+ <snippets/>
+ <!-- - - - - - - - - - - - - - - -->
+</root>
+
