@@ -5,6 +5,7 @@
   <!-- Global namespace -->
   <xacro:arg name="robot_name" default="car_1" />
   <xacro:arg name="robot_skin" default="Blue" />
+  <xacro:arg name="mu_wheels" default="0.5" />
 
   <!-- inertial parameter macros -->
 
@@ -291,7 +292,7 @@
 
   <xacro:wheel_transmission name="$(arg robot_name)_left_front_wheel" />
 
-  <!-- Add the left front wheel with its joints and tranmissions -->
+  <!-- Add the right front wheel with its joints and tranmissions -->
 
   <link name="$(arg robot_name)_right_front_wheel">
     <inertial>
@@ -416,8 +417,8 @@
   </gazebo>
 
   <gazebo reference="$(arg robot_name)_left_rear_wheel">
-    <mu1 value="1.0"/>
-    <mu2 value="1.0"/>
+    <mu1 value="$(arg mu_wheels)"/>
+    <mu2 value="$(arg mu_wheels)"/>
     <kp  value="10000000.0" />
     <kd  value="1.0" />
     <fdir1 value="1 0 0"/>
@@ -425,8 +426,8 @@
   </gazebo>
 
   <gazebo reference="$(arg robot_name)_right_rear_wheel">
-    <mu1 value="1.0"/>
-    <mu2 value="1.0"/>
+    <mu1 value="$(arg mu_wheels)"/>
+    <mu2 value="$(arg mu_wheels)"/>
     <kp  value="10000000.0" />
     <kd  value="1.0" />
     <fdir1 value="1 0 0"/>
@@ -434,8 +435,8 @@
   </gazebo>
 
   <gazebo reference="$(arg robot_name)_left_front_wheel">
-    <mu1 value="1.0"/>
-    <mu2 value="1.0"/>
+    <mu1 value="$(arg mu_wheels)"/>
+    <mu2 value="$(arg mu_wheels)"/>
     <kp  value="10000000.0" />
     <kd  value="1.0" />
     <fdir1 value="0 0 1"/>
@@ -443,8 +444,8 @@
   </gazebo>
 
   <gazebo reference="$(arg robot_name)_right_front_wheel">
-    <mu1 value="1.0"/>
-    <mu2 value="1.0"/>
+    <mu1 value="$(arg mu_wheels)"/>
+    <mu2 value="$(arg mu_wheels)"/>
     <kp  value="10000000.0" />
     <kd  value="1.0" />
     <fdir1 value="0 0 1"/>

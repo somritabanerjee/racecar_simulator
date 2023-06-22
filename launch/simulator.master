@@ -27,6 +27,8 @@
                value          = '-5.0'/>
   <arg         name           = 'paint'
                value          = 'Yellow'/>
+  <arg         name           = 'mu_wheels'
+               value          = '500000'/>
   <arg         name           = 'run_gazebo'
                value          = 'true'/>
   <arg         name           = 'world_name'

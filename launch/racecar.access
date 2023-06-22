@@ -17,12 +17,12 @@
                args           = '-d $(find f1tenth-sim)/rviz/$(arg car_name).rviz'/>
 
 <group         ns             = '$(arg car_name)'>
-<!-- bring up command multiplexer -->
+<!-- bring up keyboard teleop -->
 <node          name           = 'keyboard_teleop'
                pkg            = 'f1tenth-sim'
                type           = 'keyboard_teleop.py'
                args           = '$(arg car_name)'
-               output         = 'screen'/>
+               output         = 'screen'/> -->
 
 <!-- bring up command multiplexer -->
 <node          name           = 'command_multiplexer'
@@ -30,6 +30,20 @@
                type           = 'command_multiplexer.py'
                args           = '$(arg car_name)
                                  $(arg listen_offboard)'
-               output         = 'screen'/> </group>
+               output         = 'screen'/>
+
+<!-- bring up straight line command -->
+<!-- <node          name           = 'straight_line_command'
+               pkg            = 'f1tenth-sim'
+               type           = 'straight_line_command.py'
+               args           = '$(arg car_name)'
+               output         = 'screen'/>  -->
+
+<!-- <node          name           = 'direct_torque_command'
+               pkg            = 'f1tenth-sim'
+               type           = 'direct_torque_command.py'
+               args           = '$(arg car_name)'
+               output         = 'screen'/>  -->
+</group> 
 
 </launch>

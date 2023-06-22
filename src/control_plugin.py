@@ -38,6 +38,11 @@ RFW_topic   = '/{}/right_front_wheel_velocity_controller/command'.format(car_nam
 LSH_topic   = '/{}/left_steering_hinge_position_controller/command'.format(car_name)
 RSH_topic   = '/{}/right_steering_hinge_position_controller/command'.format(car_name)
 
+LRW_effort_topic   = '/{}/left_rear_wheel_effort_controller/command'.format(car_name)
+RRW_effort_topic   = '/{}/right_rear_wheel_effort_controller/command'.format(car_name)
+LFW_effort_topic   = '/{}/left_front_wheel_effort_controller/command'.format(car_name)
+RFW_effort_topic   = '/{}/right_front_wheel_effort_controller/command'.format(car_name)
+
 # frame names
 
 odom_frame = 'odom'
@@ -55,8 +60,14 @@ pub_vel_LRW = rospy.Publisher(LRW_topic, Float64, queue_size = 1)
 pub_vel_RRW = rospy.Publisher(RRW_topic, Float64, queue_size = 1)
 pub_vel_LFW = rospy.Publisher(LFW_topic, Float64, queue_size = 1)
 pub_vel_RFW = rospy.Publisher(RFW_topic, Float64, queue_size = 1)
+
 pub_pos_LSH = rospy.Publisher(LSH_topic, Float64, queue_size = 1)
 pub_pos_RSH = rospy.Publisher(RSH_topic, Float64, queue_size = 1)
+
+pub_effort_LRW = rospy.Publisher(LRW_effort_topic, Float64, queue_size = 1)
+pub_effort_RRW = rospy.Publisher(RRW_effort_topic, Float64, queue_size = 1)
+pub_effort_LFW = rospy.Publisher(LFW_effort_topic, Float64, queue_size = 1)
+pub_effort_RFW = rospy.Publisher(RFW_effort_topic, Float64, queue_size = 1)
 
 # footprint parameters
 

@@ -97,10 +97,13 @@
             </contact>
             <bounce/>
             <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
               <torsional>
                 <ode/>
               </torsional>
-              <ode/>
             </friction>
           </surface>
         </collision>
@@ -163,6 +166,54 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
+    </model>
+    <model name='sandy_patch'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+	        <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode>
+                <mu>1000</mu>
+                <mu2>500</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+          </surface>
+	      </collision>
+	      <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 2 0.1</size>
+            </box>
+          </geometry>
+	        <material>
+            <script>
+              <uri>model://sandy_patch/materials/scripts</uri>
+              <uri>model://sandy_patch/materials/textures</uri>
+              <name>vrc/sand</name>
+            </script>
+          </material>
+	      </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <enable_wind>0</enable_wind>
+      </link>
+      <pose frame=''>-0.719505 -4.958021 0.01 0 -0 0</pose>
     </model>
     <audio>
       <device>default</device>

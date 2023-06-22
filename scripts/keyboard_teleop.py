@@ -8,6 +8,8 @@ import tty
 
 from ackermann_msgs.msg import AckermannDrive
 
+car_name              = str(sys.argv[1])
+
 keyBindings = {'w':(1.0,  0.0),  # move forward
                'd':(1.0, -1.0), # move foward and right
                'a':(1.0 , 1.0),  # move forward and left
@@ -29,7 +31,7 @@ def vels(speed, turn):
 
 if __name__== '__main__':
   settings    = termios.tcgetattr(sys.stdin)
-  command_pub = rospy.Publisher('/{}/teleop/command'.format(str(sys.argv[1])), AckermannDrive, queue_size = 1)
+  command_pub = rospy.Publisher('/{}/teleop/command'.format(car_name), AckermannDrive, queue_size = 1)
   rospy.init_node('keyboard_teleop', anonymous = True)
 
   speed  = 0.0
