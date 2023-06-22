@@ -1,0 +1,122 @@
+# F1-tenth
+Installed ros-melodic full
+nvidia GTX 1050 is my graphics card which is Pascal architecture
+sm_61
+https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/
+
+Installed Cuda 11 (toolkit)
+Did./complie_with_cuda.sh
+
+in autosim_ws
+catkin_make install
+
+cp -r ~/Documents/autosim_ws/src/simulator/world/race_track ~/.gazebo/models/
+
+roslaunch f1tenth-sim simulator.master run_gazebo:=true
+roslaunch f1tenth-sim simulator.master run_gazebo:=true keyboard_control:=true 
+
+-- DID NOT WORK
+
+~/.ignition/fuel/config.yaml replace api.ignitionfuel.org with fuel.ignitionrobotics.org
+
+
+Already had these controllers - useless
+sudo apt-get install ros-melodic-ros-control ros-melodic-joint-state-controller ros-melodic-effort-controllers ros-melodic-position-controllers ros-melodic-velocity-controllers ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control
+
+Tried
+rosrun f1tenth-sim keyboard_teleop.py car_1
+Note that rostopic echo car_1/teleop/command actually reflects the key bindings
+
+Tried
+sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control
+Both already installed
+
+Errors like this https://github.com/ros-simulation/gazebo_ros_demos/issues/30 led to
+sudo apt upgrade ros-melodic-*
+sudo apt upgrade - UPGRADE EVERYTHING
+
+Now redid in autosim_ws
+catkin_make install 
+
+Now 
+roslaunch f1tenth-sim simulator.master run_gazebo:=true 
+appears to work, i.e. race track shows up
+
+Also do
+roslaunch f1tenth-sim racecar.access
+
+IN SUMMARY
+roslaunch f1tenth-sim simulator.master run_gazebo:=true 
+roslaunch f1tenth-sim racecar.access
+
+
+velocity_controllers are of type
+effort_controllers/JointVelocityController
+http://wiki.ros.org/ros_control
+https://github.com/ros-controls/ros_controllers/blob/melodic-devel/effort_controllers/include/effort_controllers/joint_velocity_controller.h
+left_front_wheel_joint
+limit effort
+
+This might be useful? https://answers.ros.org/question/9437/applying-apply_joint_effort-and-apply_body_wrench/
+
+Vizing effort topic in RVIZ
+Get an error - could not find parameter robot description
+
+rosparam list has car_1/robot_description
+Duped that line and added  name           = '$robot_description'
+NOT NEEDED
+
+In rviz, change the Effor/Robot Description field to be car_1/robot_description
+
+In rqt_plot, plot
+/car_1/joint_states/effort[0] through effort[5]
+/car_1/ground_truth/pose/pose/position/x
+
+Altogether,
+roslaunch f1tenth-sim simulator.master run_gazebo:=true 
+roslaunch f1tenth-sim racecar.access
+and rqt_plot
+THEN, press just w once. Takes 20 sim sec for car to hit boundary
+
+
+In macros.xacro
+<xacro:arg name="mu_wheels" default="2.0" />
+<mu1 value="$(arg mu_wheels)"/>
+<mu2 value="$(arg mu_wheels)"/>
+
+
+To send a command:
+publish to multiplexer_pub       = rospy.Publisher('/{}/multiplexer/command'.format(car_name), AckermannDrive, queue_size = 1)
+This is picked up by a subscriber in control_plugin.py which is launched by vehicle_class.launch.xml which is launched by one_car.launch.xml which in turn is launched by simulator.master
+
+Keyboard teleop and command_multiplexer disabled in
+racecar.access
+
+Added node straight_line_command.py
+
+Spun up straight_line_command.py in racecar.access
+
+straight_line_command also records a test.bag
+
+sudo updatedb
+locate test.bag
+
+plot_efforts.py plots the bag contents
+
+Ordering of joints i.e. efforts 
+['car_1_left_front_wheel_joint', 'car_1_left_rear_wheel_joint', 'car_1_left_steering_hinge_joint', 'car_1_right_front_wheel_joint', 'car_1_right_rear_wheel_joint', 'car_1_right_steering_hinge_joint']
+
+
+rostopic echo /car_1/right_rear_wheel_velocity_controller/command
+rostopic echo /car_1/right_rear_wheel_velocity_controller/state/command
+rostopic echo /car_1/right_front_wheel_velocity_controller/command
+rostopic echo /car_1/right_front_wheel_velocity_controller/state/command  at 0 usually, jumps to -0.006 and then back to 0
+
+rostopic echo /car_1/left_rear_wheel_effort_controller/command
+rostopic echo /car_1/left_rear_wheel_effort_controller/state/command
+
+rostopic echo /car_1/left_front_wheel_effort_controller/command
+rostopic echo /car_1/left_front_wheel_effort_controller/state/command
+
+rosrun plotjuggler plotjuggler
+rosparam set /car_1/reset_to_pit_stop True

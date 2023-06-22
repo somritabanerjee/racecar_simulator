@@ -1,0 +1,23 @@
+cuda steps
+Following instructions
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+
+https://developer.nvidia.com/cuda-gpus#compute
+GeForce GTX 1050	6.1
+
+Actually 11.2 is already installed
+
+https://docs.nvidia.com/cuda/archive/11.2.1/index.html
+
+Resuming from 
+https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=18.04&target_type=deb_local
+
+sudo dpkg -i cuda-repo-ubuntu1804-11-2-local_11.2.1-460.32.03-1_amd64.deb
+sudo apt-key add /var/cuda-repo-ubuntu1804-11-3-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get -y install cuda
+
+Followed the other steps, restarted
+nvidia-smi now works
+
+now model with GP training works! :) 
